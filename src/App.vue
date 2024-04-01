@@ -1,20 +1,9 @@
 <script setup>
   import { RouterView } from 'vue-router'
-  import Layout from './components/layout.vue'
-
 </script>
 
 <template>
-  <header>
-    <Layout/>
-  </header>
-
-  <main>
+  <div class="container">
     <RouterView />
-  </main>
-  
+  </div>
 </template>
-
-<style scoped>
-  
-</style>

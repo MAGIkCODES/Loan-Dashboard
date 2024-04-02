@@ -40,14 +40,19 @@ if (window.innerWidth >= 768) {
         <!-- nav-bar -->
         <nav class="panel-header">
             <div class="nav-wrap">
-                <div class="nav-left">
-                    <button v-if="shouldShowToggleButton" class="sideBar-toggle" @click="toggleSideBar">☰</button>
+                <div class="nav-left-menu">
+                    <div class="nav-sidebar-toggle">
+                        <button v-if="shouldShowToggleButton" class="sideBar-toggle" @click="toggleSideBar">☰</button>
+                    </div>
+                    <div class="nav-user-name">
+                        <h3>Good morning, <span class="user-name">Justice</span></h3>
+                    </div>
                 </div>
-                <div class="nav-left">
-                    <h3>Good morning, <span class="user-name">Justice</span></h3>
-                </div>
-                <div class="nav-right">
-                    <p>Tue Mar 05 2024</p>
+
+                <div class="nav-right-menu">
+                    <div class="nav-right-date">
+                        <p>Tue Mar 05 2024</p>
+                    </div>
                     <button class="user-icon" @click="toggleDropdown">
                         <i class="fas fa-user"></i>
                         <div class="dropdown" v-if="showDropdown">
@@ -105,6 +110,18 @@ if (window.innerWidth >= 768) {
                 </ul>
             </div>
         </aside>
+
+        <!-- //footer -->
+        <!-- <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Your Company. All rights reserved.</p>
+                <ul class="footer-links">
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </footer> -->
     </div>
 </template>
 

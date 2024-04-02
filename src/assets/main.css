@@ -28,9 +28,10 @@ body {
   padding: 25px;
   position: fixed;
   top: 0;
-  width: 90%;
+  width: 85%;
+  max-height: 100px;
   right: 0;
-  z-index: 1000;
+  /* z-index: 1000; */
 }
 
 .nav-wrap {
@@ -75,7 +76,7 @@ body {
 .nav-right {
   display: flex; 
   align-items: center; 
-  
+  justify-content: center;
 }
 
 .nav-right p {
@@ -91,6 +92,7 @@ body {
   top: 100%;
   right: 0;
   background-color: white;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   padding: 15px;
   display: flex; 
@@ -231,6 +233,7 @@ p {
   background: #FF416C;
 	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
 	background: linear-gradient(to right, #FF4B2B, #FF416C);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
   border-bottom: 2px solid white;
   display: flex;
   justify-content: space-between;
@@ -241,12 +244,16 @@ p {
 
 .sidebar-header .close-button {
     border: 1px solid white;
-    background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+    /* background: #FF416C; */
+	  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+	  background: linear-gradient(to right, #FF4B2B, #FF416C);
     padding: auto;
     cursor: pointer;
     display: none;
+}
+
+.sidebar-header .close-button:hover {
+  color: aliceblue;
 }
 
 .sidebar-title {

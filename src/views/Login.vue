@@ -1,8 +1,24 @@
 <script setup>
-import { ref } from 'vue';
+import { ref,} from 'vue';
 import { RouterLink } from 'vue-router';
 
+const signInEmail = ref('');
+const signInPassword = ref('');
+const signUpName = ref('');
+const signUpEmail = ref('');
+const signUpPassword = ref('');
+
 const isSignUpActive = ref(false);
+
+const signIn = () => {
+   
+    // console.log('Signing in with email:', email, 'and password:', password);
+}
+
+const signUp = () => {
+    
+    // console.log('Signing up with name:', name, ', email:', email, 'and password:', password);
+}
 
 const toggleSignUp = () => {
   isSignUpActive.value = true;
@@ -12,60 +28,87 @@ const toggleSignIn = () => {
   isSignUpActive.value = false;
 };
 
+const handleSignUp = () => {
+    toggleSignUp();
+    toggleSignIn();
+    signUp();
+};
+const handleSignIn = () => {
+    toggleSignUp();
+    toggleSignIn();
+    signIn();
+};
+
 </script>
 
+
 <template>
-  <div class="container" :class="{ 'right-panel-active': isSignUpActive }" >
-    <div class="form-container sign-up-container">
-        <form>
-          <h1>Create Account</h1>
-          <div class="social-container">
-            <router-link to="#" class="social"><i class="fab fa-facebook-f"></i></router-link>
-            <router-link to="#" class="social"><i class="fab fa-google-plus-g"></i></router-link>
-            <router-link to="#" class="social"><i class="fab fa-linkedin-in"></i></router-link>
-          </div>
-          <span>or use your email for registration</span>
-          <input type="text" placeholder="Name"  required/>
-          <input type="email" placeholder="Email"  required/>
-          <input type="password" placeholder="Password" required />
-          <button @click="toggleSignUp">Sign Up</button>
-        </form>
-    </div>
-    <div class="form-container sign-in-container">
-      <form>
-          <h1>Sign in</h1>
-          <div class="social-container">
-            <router-link to="#" class="social"><i class="fab fa-facebook-f"></i></router-link>
-            <router-link to="#" class="social"><i class="fab fa-google-plus-g"></i></router-link>
-            <router-link to="#" class="social"><i class="fab fa-linkedin-in"></i></router-link>
-          </div>
-          <span>or use your account</span>
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required/>
-          <router-link to="#">Forgot your password?</router-link>
-          <button @click="toggleSignIn">Sign In</button>
-      </form>
-    </div>
-      <div class="overlay-container">
-          <div class="overlay">
-            <div class="overlay-panel overlay-left">
-              <h1>Welcome Back!</h1>
-              <p>To keep connected with us please login with your personal info</p>
-              <button class="ghost" @click="toggleSignIn">Sign In</button>
-            </div>
-            <div class="overlay-panel overlay-right">
-                <h1>Hello, Friend!</h1>
-                <p>Enter your personal details and start journey with us</p>
-                <button class="ghost"  @click="toggleSignUp">Sign Up</button>
-            </div>
-          </div>
-      </div>
-  </div>
-</template>
+	<div class="container" :class="{ 'right-panel-active': isSignUpActive }">
+	  <div class="form-container sign-up-container">
+		<form @submit.prevent="handleSignUp">
+		  <h1>Create Account</h1>
+		  <div class="social-container">
+			<router-link to="#" class="social"><i class="fab fa-facebook-f"></i></router-link>
+			<router-link to="#" class="social"><i class="fab fa-google-plus-g"></i></router-link>
+			<router-link to="#" class="social"><i class="fab fa-linkedin-in"></i></router-link>
+		  </div>
+		  <span>or use your email for registration</span>
+		  <input type="text" placeholder="Name" v-model="signUpName" required/>
+		  <input type="email" placeholder="Email" v-model="signUpEmail" required/>
+		  <input type="password" placeholder="Password" v-model="signUpPassword" required/>
+		  <button @click="signUp">Sign Up</button>
+		</form>
+	  </div>
+	  <div class="form-container sign-in-container">
+		<form @submit.prevent="handleSignIn">
+		  <h1>Sign in</h1>
+		  <div class="social-container">
+			<router-link to="#" class="social"><i class="fab fa-facebook-f"></i></router-link>
+			<router-link to="#" class="social"><i class="fab fa-google-plus-g"></i></router-link>
+			<router-link to="#" class="social"><i class="fab fa-linkedin-in"></i></router-link>
+		  </div>
+		  <span>or use your account</span>
+		  <input type="email" placeholder="Email" v-model="signInEmail" required />
+		  <input type="password" placeholder="Password" v-model="signInPassword" required/>
+		  <router-link to="#">Forgot your password?</router-link>
+		  <button @click="signIn">Sign In</button>
+		</form>
+	  </div>
+	  <div class="overlay-container">
+		<div class="overlay">
+		  <div class="overlay-panel overlay-left">
+			<h1>Welcome Back!</h1>
+			<p>To keep connected with us please login with your personal info</p>
+			<button class="ghost" @click="toggleSignIn">Sign In</button>
+		  </div>
+		  <div class="overlay-panel overlay-right">
+			<h1>Hello, Friend!</h1>
+			<p>Enter your personal details and start journey with us</p>
+			<button class="ghost" @click="toggleSignUp">Sign Up</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </template>
+  
+
 
 
 
 <style scoped>
+
+.container {
+	background-color: #fff;
+  	color: #000;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 500px;
+	max-width: 100%;
+	min-height: 400px;
+}
+
 h1 {
 	font-weight: bold;
 	margin: 0;
@@ -79,8 +122,8 @@ p {
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
-	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
+	color: #fff;
 }
 
 span {
@@ -101,8 +144,7 @@ button {
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 12px 20px ;
-	letter-spacing: 1px;
+	padding: 10px 18px ;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 }
@@ -126,7 +168,7 @@ form {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 50px;
+	padding: 0 10px;
 	height: 100%;
 	text-align: center;
 }
@@ -139,22 +181,12 @@ input {
 	width: 100%;
 }
 
-.container {
-	background-color: #fff;
-  	color: #000;
-	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 480px;
-}
 
 .form-container {
 	position: absolute;
 	top: 0;
 	height: 100%;
+	max-width: 80%;
 	transition: all 0.6s ease-in-out;
 }
 
@@ -275,4 +307,12 @@ input {
 	width: 40px;
 }
 
+
+@media  (max-width: 768px) {
+  .container {
+	max-width: 100%;
+	border-radius: 0;
+  }
+
+}
 </style>
